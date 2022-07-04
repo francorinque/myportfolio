@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
 
+
 *{
     margin: 0;
     padding: 0;
@@ -13,11 +14,9 @@
 
 
 :root{
-    --color-primario: #000000; 
-    --color-secundario: #f3efef;
-    --color-terciario: #464646;
-    --cyan: #5b63b7;
-    --azul-2: #161e35;
+    --color-bg: #2e2249;
+    --color-bg-oscuro: hsl(258, 36%, 11%) ;
+    --color-texto: #cbe8e8; 
     --nav-fz: 22px;
     --regular: 400;
     --semibold: 600;
@@ -38,12 +37,12 @@ html{
 }
 
 body{
-    background-color: var(--color-primario);
+    background-color: var(--color-bg);
 }
 
 .contenedor{
     width: 100%;
-    background-color: var(--color-primario);
+    background-color: var(--color-bg);
 }
 
 .section{
@@ -57,8 +56,8 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 30px;
-    background-color: var(--color-primario);
+    padding: 0px 20px;
+    background-color: var(--color-bg);
     height: 60px;
     position: fixed;
     top:0;
@@ -80,7 +79,7 @@ nav ul{
     right: -100%;
     width: 50%;
     height: calc(100vh - 60px);
-    background-color: var(--color-primario);
+    background-color: var(--color-bg);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -93,14 +92,14 @@ nav ul{
 
 nav ul li a{
     font-size: var(--nav-fz);
-    color: var(--color-secundario);
+    color: var(--color-texto);
     font-weight: var(--semibold);
 }
 
 nav .nav_logo{
     font-size: var(--nav-fz);
-    font-weight: var(--bold);
-    color: var(--color-secundario);
+    font-weight: var(--semibold);
+    color: var(--color-texto);
     letter-spacing: 3px;
 }
 
@@ -131,57 +130,66 @@ nav .nav_label .closemenu{
     display: block;
 }
 
+
+
+@media (min-width: 768px){
+
+    nav .nav_label img{
+        display: none;
+    }
+
+    nav{
+        padding: 0 20px;
+    }
+        
+    nav ul{
+        position: static;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 30px;
+        padding: 30px 0;
+        
+    }
+
+
+
+    nav ul li a{
+        position: relative;
+        display: inline-block;
+    }
+
+    nav ul li a::after{
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        background-color: var(--color-texto);
+        bottom: -5px;
+        left:0;
+        transition: ease .3s;
+
+    }
+
+    nav ul li a:hover::after{
+        transition: ease .3s;
+        width: 100%;
+    }
+
+    nav ul li a:hover{
+        opacity: 70%;
+    }
+
+}
+
 @media (min-width: 992px){
-
-nav{
-    padding: 0;
-}
-    
-nav ul{
-    position: static;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 30px;
-    padding: 30px 0;
-    
-}
-
-
-nav .nav_label img{
-    display: none;
-}
-
-nav ul li a{
-    position: relative;
-    display: inline-block;
-}
-
-nav ul li a::after{
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background-color: var(--cyan);
-    bottom: -5px;
-    left:0;
-    transition: ease .3s;
-
-}
-
-nav ul li a:hover::after{
-    transition: ease .3s;
-    width: 100%;
-}
-
-nav ul li a:hover{
-    color: var(--cyan);
-}
-
+    nav{
+        padding: 0;
+    }
 }
 
 /****** TERMINA NAV MENU  */
@@ -191,7 +199,7 @@ nav ul li a:hover{
 /******* SECCION HERO  */
 
 #hero{
-    color: var(--color-terciario);
+    color: var(--color-texto);
     padding: 250px 0 100px 0;
     display: flex;
     align-items: center;
@@ -201,7 +209,7 @@ nav ul li a:hover{
 .hero__card{
     width: min(80%,350px);
     min-height: 300px;
-    background-color: var(--color-secundario);
+    background-color: var(--color-bg-oscuro);
     display: flex;
     gap: 20px;
     padding: 140px 0 30px 0;
@@ -210,13 +218,12 @@ nav ul li a:hover{
     align-items: center;
     position: relative;
     border-radius: 10px;
-    box-shadow: 0px 10px 0px 3px var(--cyan);
 }
 
 .card__img{
     width: 200px;
     height: 200px;
-    outline: 8px solid var(--color-terciario);
+    outline: 8px solid var(--color-texto);
     background-image: url('../Assets/myphotorecort.jpg');
     background-size: cover;
     background-position: center center;
@@ -235,6 +242,7 @@ nav ul li a:hover{
     display: grid;
     grid-auto-flow: column;
     justify-content: center;
+    align-content: center;
     column-gap: 10px;
 }
 
@@ -244,12 +252,12 @@ nav ul li a:hover{
 }
 
 .card__redes  img {
-    width: 40px;
+    width: 30px;
 }
 
 .card__name{
     font-weight: var(--bold);
-    font-size: clamp(2rem,4vw,2.2rem);
+    font-size: clamp(1.7rem,4vw,2.2rem);
     text-transform: uppercase;
     margin-bottom: 4px;
    color: var(--cyan);
@@ -257,7 +265,6 @@ nav ul li a:hover{
 
 .card__position{
     font-weight: var(--semibold);
-   color: var(--color-primario);
 
 }
 
@@ -273,7 +280,7 @@ nav ul li a:hover{
 
 }
 
-@media(min-width: 992px){
+@media(min-width: 768px){
     
     #hero{
         background: linear-gradient(
@@ -284,10 +291,6 @@ nav ul li a:hover{
         background-size: cover;
         background-position: center center;
         background-attachment: fixed;
-    }
-
-    .card__redes  img {
-        width: 50px;
     }
 
 }
@@ -306,8 +309,8 @@ nav ul li a:hover{
 }
 
 .beneficios__title{
-    color: var(--color-secundario);
-    font-size: clamp(2rem,4vw,2.5rem);
+    color: var(--color-texto);
+    font-size: clamp(2.5rem,4vw,2.5rem);
 }
 
 .beneficios__container-cards{
@@ -342,8 +345,8 @@ nav ul li a:hover{
 
     width: 100%;
     height: 100%;
-    background-color: rgb(0 0 0 / 80%);
-    color: var(--color-secundario);
+    background-color: var(--color-bg-oscuro);
+    color: var(--color-texto);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -391,7 +394,6 @@ nav ul li a:hover{
     .beneficios__card:hover{
         transform: scale(1.1);
         transition: ease .3s;
-        box-shadow: 0px 0px 5px white;
         cursor: pointer;
     }
 
@@ -461,11 +463,17 @@ nav ul li a:hover{
     line-height: 1.2;
     font-weight: var(--semibold);
     opacity: 90%;
+    width: 80%;
+    max-width: 400px;
 }
 .proyectos__btn{
     display: none;
 }
 
+.card__picture{
+    max-width: 100%;
+    width: 100%;
+}
 /* card  */
 
 
@@ -482,6 +490,7 @@ nav ul li a:hover{
     border: 2px solid var(--cyan);
     padding: 10px;
     padding-bottom: 20px;
+    background-color:  hsl(258, 36%, 11%);
     width: 95%;
     height: 100%;
     border-radius: 8px;
@@ -492,10 +501,7 @@ nav ul li a:hover{
     margin: 0 auto;
 }
 
-.card__picture{
-    max-width: 100%;
 
-}
 
 .proyectos__cards .card__title{
     color: var(--color-secundario);
@@ -514,6 +520,10 @@ nav ul li a:hover{
     color: var(--cyan);
     margin-left: auto;
     font-size: 13px;
+}
+
+.btn.proyectos__btn-mobile{
+    background-color: var(--color-bg-oscuro);
 }
 
 @media (min-width: 800px){
@@ -544,11 +554,12 @@ nav ul li a:hover{
     }
 
     .btn.proyectos__btn{
+       
         display: block;
         text-align: center;
         padding: 10px 20px;
         border: none;
-        background-color: var(--cyan);
+        background-color: var(--color-bg-oscuro);
         font-weight: 700;
         flex: 1 1 40%;
     }
@@ -566,9 +577,13 @@ nav ul li a:hover{
 
 @media(min-width: 992px){
  
+    .proyectos__header{
+        justify-content: space-around;
+    }
+  
 
     .proyectos__cards{
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(3,350px);
        grid-template-rows: repeat(6,1fr);
         padding: 0;
     }
@@ -587,12 +602,7 @@ nav ul li a:hover{
     }
 
     .card:hover{
-        transform: scale(1.1);
-        transition:  ease .7s;
-        background: linear-gradient(to top,
-        #313566,#5b63b7);
         cursor: pointer;
-        border-color: var(--color-secundario);
     }
 
     .card:hover .btn.card__btn{
@@ -600,6 +610,18 @@ nav ul li a:hover{
     }
 
     .btn.proyectos__btn{
-        flex: 1 1 30%;
+        flex: 1 1 20%;
+    }
+
+    .btn.card__btn{
+        font-size: 1.2rem;
+    }
+
+    .btn.card__btn:hover{
+        opacity: 80%;
+        font-size: 1rem;
+    }
+    .proyectos__texts{
+        flex: 1 1 80%;
     }
 }
